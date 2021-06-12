@@ -55,6 +55,14 @@ func (cc *CloudConfig) SetSshPwAuth(enable bool) {
 	cc.SshPwAuth = &enable
 }
 
+func (cc *CloudConfig) SetChpasswdExpire(enable bool) {
+	cc.ChPasswd = &ChPasswd{Expire: enable}
+}
+
+func (cc *CloudConfig) AddBashScript(script string) {
+	cc.AddRunCmd("/bin/bash", "-c", script)
+}
+
 func (cc *CloudConfig) Generate() ([]byte, error) {
 	out, _ := yaml.Marshal(cc)
 	return append([]byte("#cloud-config\n"), out...), nil
