@@ -9,7 +9,7 @@ type CloudConfig struct {
 	Packages  []string  `yaml:",omitempty"`
 	SshPwAuth *bool     `yaml:"ssh_pwauth,omitempty"`
 	ChPasswd  *ChPasswd `yaml:",omitempty"`
-	Commands  []Command `yaml:",flow,omitempty"`
+	Commands  []Command `yaml:"runcmd,flow,omitempty"`
 	Mounts    []Mount   `yaml:",omitempty,flow"`
 }
 
