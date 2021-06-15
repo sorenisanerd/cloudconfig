@@ -1,0 +1,25 @@
+---
+name: "main"
+
+on:
+  push:
+    branches:
+      - "master"
+
+jobs:
+  pre-release:
+    name: "Run tests"
+    runs-on: "ubuntu-latest"
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 1
+
+    - name: Set up Go
+      uses: actions/setup-go@v2
+      with:
+        go-version: 1.16
+
+    - name: "Build & test"
+      run: "go test ./..."
